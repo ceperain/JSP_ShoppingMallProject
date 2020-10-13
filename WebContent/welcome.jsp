@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +12,8 @@
 	String tagline = "Welcome to Web Market!";
 %>
 <body>
-	<nav class="navbar  navbar-expand  navbar-dark  bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="./welcome.jsp">Home</a>
-			</div>
-		</div>
-	</nav>
+	<%@ include file="menu.jsp" %>
+	
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">
@@ -27,14 +22,34 @@
 		</div>
 	</div>
 	<div class="container">
-		<h3 class="text-center">
-			<%=tagline %>
-		</h3>
+		<div class="text-center">
+			<h3 class="text-center">
+				<%=tagline %>
+			</h3>
+		
+			<%
+				Date day = new Date();
+				String am_pm;
+				int hour = day.getHours();
+				int minute = day.getMinutes();
+				int second = day.getSeconds();
+				if(hour <= 12)
+				{
+					am_pm = "AM";
+				} else
+				{
+					am_pm = "PM";
+					hour = hour - 12;
+				}
+				String CT = hour + ":" + minute + ":" + second + " " + am_pm;
+				out.println("현재 접속 시각 : " + CT + "\n");
+			%>
+		</div>
 		<hr>
 	</div>
-	<footer class="container">
-		<p>&copy; WebMarket</p>
-	</footer>
+	
+	<%@ include file="footer.jsp" %>
+	
 
 </body>
 </html>
