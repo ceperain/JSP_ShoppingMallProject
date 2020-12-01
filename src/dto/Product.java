@@ -17,6 +17,10 @@ public class Product implements Serializable
 	private long unitsInStock;
 	private String condition;
 	
+	private String filename; //이미지 파일 이름
+	
+	
+
 	public Product() { super(); }
 	
 	public Product(String productId, String pname, Integer unitPrice)
@@ -106,6 +110,15 @@ public class Product implements Serializable
 		this.condition = condition;
 	}
 	
+	public String getFilename()
+	{
+		return filename;
+	}
+
+	public void setFilename(String filename)
+	{
+		this.filename = filename;
+	}
 	
 
 }
